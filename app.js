@@ -8,10 +8,15 @@ const PageController = require("./Controller/PageController");
 const PostController = require("./Controller/PostController");
 
 const Post = require("./models/Post");
-const port = 3000;
+const port = process.env.PORT || 5000;
 
 //DB connect
-mongoose.connect("mongodb://localhost:27017/cleanblog-test-db");
+mongoose.connect("mongodb+srv://cleanbg:748159263@cluster0.noxda.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+.then(()=>{
+  console.log('Db connected')})
+.catch((err)=>{
+  console.log(err)
+})
 // middleware
 app.use(express.static("puplic"));
 app.use(express.urlencoded({ extended: true }));
